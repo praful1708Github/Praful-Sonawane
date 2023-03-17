@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.container{
+    width: 1260px;
+    height: 1200px;
+    border: 1px solid rebeccapurple;
+}
+.navbar{
+    width: 1260px;
+    height: 120px;
+    border: 1px solid red;
+}
+.top-navbar{
+    width: 1260px;
+    height: 40px;
+    border: 1px solid black;
+}
+.bottom-navbar{
+    width: 1260px;
+    height: 80px;
+    border: 1px solid forestgreen;
+}
+.Top-categories{
+    width: 200px;
+    height: 570px;
+    border: 1px solid hotpink;
+    margin-left: 30px;
+}
+.main{
+    width: 1260px;
+    height: 1080px;
+    border: 2px solid navy;
+    display: flex;
+}
+.card{
+    width: 650px;
+    height: 300px;
+    border: 1px solid green;
+}
+#logout{
+    margin-top: 600px;
+}

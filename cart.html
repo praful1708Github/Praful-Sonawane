@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+</head>
+
+<body>
+    <h1>Cart</h1>
+    <div id="cartProducts">
+
+    </div>
+    <button  onclick="buyProducts()">Click here to Buy these products. </button>
+
+    <script>
+        window. onload  =  function () {
+            var  dataFromLS  =  JSON. parse(localStorage. getItem("current-user"));
+            if  (! dataFromLS) {
+                window. location. href  =  '/login.html';
+                alert("Kindly Login First...")
+            } else {
+                var  dataFromLS  =  JSON. parse(localStorage. getItem("userData"));
+                var  currentUser  =  JSON. parse(localStorage. getItem("current-user"));
+                var  divFromHtml  =  document. getElementById("cartProducts");
+                cartProducts ;
+                var flag = false;
+                for (var i = 0;  i < dataFromLS. length;  i++) {
+                    if  (dataFromLS[i]. email  ===  currentUser["current-user-email"]  &&  dataFromLS[i]. cartProducts) {
+                        cartProducts  =  dataFromLS[i]. cartProducts;
+                        flag = true;
+                    }
+                }
+                if (flag === false) {
+                    alert("NO Products added To cart..please buy some prodeucts!!")
+                } else {
+                    console. log(cartProducts,  'cartProducts')
+                    var productsWithHTMl = [];
+                    for (var i = 0;  i < cartProducts. length;  i++) {
+                        productsWithHTMl += '<div><img src="${cartProducts[i]. image}" /><br/><h1>${cartProducts[i]. name}</h1><br/><p>${cartProducts[i]. prcie}</p></div>';
+                    }
+                    divFromHtml. innerHTML  =  productsWithHTMl;
+                }
+            }
+        };
+
+        function buyProducts() {
+        
+            var  dataFromLS  =  JSON. parse(localStorage. getItem("userData"));
+            var  currentUser  =  JSON. parse(localStorage. getItem("current-user"));
+            var updatedUser = [];
+            for (var i = 0;  i < dataFromLS. length;  i++) {
+                if  (dataFromLS[i]. email  ===  currentUser["current-user-email"]  &&  dataFromLS[i]. cartProducts) {
+                    dataFromLS[i]. cartProducts = [];
+                    updatedUser. push(dataFromLS[i])
+                } else {
+                    updatedUser. push(dataFromLS[i])
+                }
+            }
+            localStorage. setItem("userData",  JSON. stringify(updatedUser));
+            window. location. href  =  '/snapdeal.html';
+            alert("Products will be deliverd soon.")
+
+        }
+
+
+    </script>
+</body>
+
+</html>
